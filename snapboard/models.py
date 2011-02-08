@@ -104,7 +104,7 @@ class Invitation(models.Model):
     sent_to = models.ForeignKey(User, verbose_name=_('sent to'), related_name='sb_received_invitation_set')
     sent_date = models.DateTimeField(_('sent date'), auto_now_add=True)
     response_date = models.DateTimeField(_('response date'), blank=True, null=True)
-    accepted = models.BooleanField(_('accepted'), blank=True, null=True)
+    accepted = models.BooleanField(_('accepted'), default=False)
 
     class Meta:
         verbose_name = _('invitation')
