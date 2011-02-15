@@ -1,6 +1,6 @@
 import os
 
-from django.db.models import signals 
+from django.db.models import signals
 from django.conf import settings
 
 from snapboard import models as snapboard_app
@@ -12,12 +12,12 @@ def test_setup(**kwargs):
     from snapboard import sampledata
 
     if not settings.DEBUG:
-        return 
+        return
 
     if Thread.objects.all().count() > 0:
         # return, since there seem to already be threads in the database.
         return
-    
+
     # ask for permission to create the test
     msg = """
     You've installed SNAPboard with DEBUG=True, do you want to populate
@@ -65,6 +65,5 @@ def test_setup(**kwargs):
             # allows setting of arbitrary ip
             post.management_save()
 
-signals.post_syncdb.connect(test_setup, sender=snapboard_app) 
+#signals.post_syncdb.connect(test_setup, sender=snapboard_app)
 # vim: ai ts=4 sts=4 et sw=4
-
