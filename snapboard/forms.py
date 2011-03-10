@@ -44,13 +44,13 @@ class PostForm(forms.Form):
 
 class ThreadForm(forms.Form):
     subject = forms.CharField(max_length=80,
-        label=_('Subject'),
+        label=_('Title'),
         widget=forms.TextInput(
             attrs={'size': '80',})
         )
     post = forms.CharField(widget=forms.Textarea(
         attrs={'rows':'8', 'cols': '80',}),
-        label=_('Message')
+        label=_('Thread')
     )
 
     # this is here to set the order
