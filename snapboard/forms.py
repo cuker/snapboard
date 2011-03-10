@@ -43,8 +43,6 @@ class PostForm(forms.Form):
 
 
 class ThreadForm(forms.Form):
-    # this is here to set the order
-    category = forms.ModelChoiceField(label=_('Category'), queryset=Category.objects.all())
     subject = forms.CharField(max_length=80,
         label=_('Subject'),
         widget=forms.TextInput(
@@ -54,6 +52,10 @@ class ThreadForm(forms.Form):
         attrs={'rows':'8', 'cols': '80',}),
         label=_('Message')
     )
+
+    # this is here to set the order
+    category = forms.ModelChoiceField(label=_('Category'), queryset=Category.objects.all())
+
 
 #    def clean_category(self):
 #        id = int(self.cleaned_data['category'])
