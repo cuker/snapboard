@@ -43,30 +43,17 @@ class PostForm(forms.Form):
 
 
 class ThreadForm(forms.Form):
-#    def __init__( self, *args, **kwargs ):
-#        super( ThreadForm, self ).__init__( *args, **kwargs )
-#        self.fields['category'] = forms.ChoiceField(
-#                label = _('Category'),
-#                choices = [(str(x.id), x.label) for x in Category.objects.all()] 
-#                )
-
-#    # this is here to set the order
-#    category = forms.CharField(label=_('Category'))
-
+    # this is here to set the order
+    category = forms.ModelChoiceField(label=_('Category'), queryset=Category.objects.all())
     subject = forms.CharField(max_length=80,
-            label=_('Subject'),
-            widget=forms.TextInput(
-                attrs={
-                    'size': '80',
-                })
-            )
-    post = forms.CharField(widget=forms.Textarea(
-            attrs={
-                'rows':'8',
-                'cols': '80',
-            }),
-            label=_('Message')
+        label=_('Subject'),
+        widget=forms.TextInput(
+            attrs={'size': '80',})
         )
+    post = forms.CharField(widget=forms.Textarea(
+        attrs={'rows':'8', 'cols': '80',}),
+        label=_('Message')
+    )
 
 #    def clean_category(self):
 #        id = int(self.cleaned_data['category'])

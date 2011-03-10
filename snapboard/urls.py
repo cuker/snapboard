@@ -20,7 +20,7 @@ urlpatterns = patterns('',
     (r'^threads/$', thread_index, {}, 'snapboard_thread_index'),
     (r'^threads/id/(?P<thread_id>\d+)/$', thread, {}, 'snapboard_thread'),
     (r'^threads/category/(?P<cat_id>\d+)/$', category_thread_index, {}, 'snapboard_category_thread_index'),
-    (r'^threads/category/(?P<cat_id>\d+)/newtopic/$', new_thread, {}, 'snapboard_new_thread'),
+    (r'^threads/newtopic/$', new_thread, {}, 'snapboard_new_thread'),
     (r'^threads/post/(?P<post_id>\d+)/$', locate_post, {}, 'snapboard_locate_post'),
     (r'^settings/$', edit_settings, {}, 'snapboard_edit_settings'),
 

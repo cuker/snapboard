@@ -220,13 +220,13 @@ def edit_post(request, original, next=None):
 
 ##
 # Should new discussions be allowed to be private?  Leaning toward no.
-def new_thread(request, cat_id):
+def new_thread(request):
     '''
     Start a new discussion.
     '''
-    category = get_object_or_404(Category, pk=cat_id)
-    if not category.can_create_thread(request.user):
-        raise PermissionError
+    # category = get_object_or_404(Category, pk=cat_id)
+    # if not category.can_create_thread(request.user):
+    #     raise PermissionError
 
     if request.POST:
         threadform = ThreadForm(request.POST)
@@ -234,7 +234,7 @@ def new_thread(request, cat_id):
             # create the thread
             thread = Thread(
                     subject = threadform.cleaned_data['subject'],
-                    category = category,
+                    category = threadform.cleaned_data['category'],
                     )
             thread.save()
 
